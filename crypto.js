@@ -34,9 +34,11 @@ app.use(async ctx => {
   let ciphertext = CryptoJS.AES.encrypt('my message', 'secret key 123').toString();
   
   // Decrypt
-  let bytes  = CryptoJS.AES.decrypt(ciphertext, 'secret key 123');
-  let originalText = bytes.toString(CryptoJS.enc.Utf8);
-  
+  for(let i =0; i<20; i++){
+    let bytes  = CryptoJS.AES.decrypt(ciphertext, 'secret key 123');
+    let originalText = bytes.toString(CryptoJS.enc.Utf8);
+  }
+
   count++;
 });
 
