@@ -1,6 +1,6 @@
 const Koa = require('koa');
 const app = new Koa();
-const SHA256 = require("crypto-js/sha256");
+const CryptoJS = require("crypto-js");
 
 let count=0;
 let lastCount = 0;
@@ -30,7 +30,13 @@ app.use(async (ctx, next) => {
 app.use(async ctx => {
   ctx.body = "Hello World\n";
   //进行负载
-  SHA256("Message");
+  // Encrypt
+  let ciphertext = CryptoJS.AES.encrypt('my message', 'secret key 123').toString();
+  
+  // Decrypt
+  let bytes  = CryptoJS.AES.decrypt(ciphertext, 'secret key 123');
+  let originalText = bytes.toString(CryptoJS.enc.Utf8);
+  
   count++;
 });
 
