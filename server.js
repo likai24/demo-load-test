@@ -10,7 +10,7 @@ let timer = setInterval(()=>{
 app.use(async (ctx, next) => {
   await next();
   const rt = ctx.response.get('X-Response-Time');
-  console.log(`${ctx.method} ${ctx.url} - ${rt}`);
+  // console.log(`${ctx.method} ${ctx.url} - ${rt}`);
 });
 
 // x-response-time
@@ -26,6 +26,7 @@ app.use(async (ctx, next) => {
 
 app.use(async ctx => {
   ctx.body = "Hello World\n";
+  count++;
 });
 
 
