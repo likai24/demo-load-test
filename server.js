@@ -2,6 +2,9 @@ const Koa = require('koa');
 const app = new Koa();
 
 let count=0;
+let timer = setInterval(()=>{
+  console.log(count);
+}, 1000)
 // logger
 
 app.use(async (ctx, next) => {
@@ -25,5 +28,6 @@ app.use(async ctx => {
   ctx.body = "Hello World\n";
   console.log(count++);
 });
+
 
 app.listen(3000);
