@@ -2,8 +2,10 @@ const Koa = require('koa');
 const app = new Koa();
 
 let count=0;
+let lastCount = 0;
 let timer = setInterval(()=>{
-  console.log(count);
+  console.log(`总共 ${count} , ${count - lastCount}/s`);
+  lastCount = count;
 }, 1000)
 // logger
 
